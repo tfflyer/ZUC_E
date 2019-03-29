@@ -10,9 +10,9 @@
 	 1.
 	 2.
   *History:
-	 1.Date:
-	   Author:
-	   Modification:
+	 1.Date:2019-03-29
+	   Author:TFflyer
+	   Modification:重构了主算法的头文件，使得主算法可以被加密算法顺利调用
 **********************************************************************************/
 
 #include"ZUC_mian.h"
