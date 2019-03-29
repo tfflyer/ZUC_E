@@ -15,22 +15,26 @@
 	   Modification:
 **********************************************************************************/
 
-#include"ZUC_main.h"
+#include"ZUC_mian.h"
 #include<malloc.h>
+#include<iostream>
+
+
 
 typedef unsigned char u8; 
 typedef unsigned int u32;
+
 void ZUC(u8* k, u8* iv, u32* ks, int len) {
 	Initialization(k, iv);
 	GenerateKeystream(ks, len);
 }
-void EEA3(u8* CK, u32 COUNT, u32 BEARER, u32 DIRECTION, u32 LENGTH, u32* M, u32* C){
-	u32 *z, L, i; 
+void EEA3(u8* CK, u32 COUNT, u32 BEARER, u32 DIRECTION, u32 LENGTH, u32* M, u32* C) {
+	u32 *z, L, i;
 	u8 IV[16];
-	L = (LENGTH + 31)/32;
+	L = (LENGTH + 31) / 32;
 	z = (u32 *)malloc(L * sizeof(u32));
 
-	IV[0] = (COUNT >> 24) & 0xFF; 
+	IV[0] = (COUNT >> 24) & 0xFF;
 	IV[1] = (COUNT >> 16) & 0xFF;
 	IV[2] = (COUNT >> 8) & 0xFF;
 	IV[3] = COUNT & 0xFF;
@@ -42,16 +46,21 @@ void EEA3(u8* CK, u32 COUNT, u32 BEARER, u32 DIRECTION, u32 LENGTH, u32* M, u32*
 	IV[9] = IV[1];
 	IV[10] = IV[2];
 	IV[11] = IV[3];
-		
+
 	IV[12] = IV[4];
 	IV[13] = IV[5];
 	IV[14] = IV[6];
 	IV[15] = IV[7];
 
 	ZUC(CK, IV, z, L);
-	for (i = 0; i < L; i++) 
+	for (i = 0; i < L; i++)
 	{
 		C[i] = M[i] ^ z[i];
-	} 
+	}
+
 	free(z);
+}
+
+int main() {
+
 }

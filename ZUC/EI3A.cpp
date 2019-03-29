@@ -17,12 +17,17 @@
 **********************************************************************************/
 
 
-#include"ZUC_main.h"
+#include"ZUC_mian.h"
 #include<malloc.h>
+
+
 
 typedef unsigned char u8; 
 typedef unsigned int u32;
-void ZUC(u8* k, u8* iv, u32* keystream, int length); 
+void ZUC2( u8* k, u8 *iv,  u32* keystream,  int length) {
+	Initialization(k, iv);
+	GenerateKeystream(keystream, length);
+}
 /*see Annex 1*/ 
 u32 GET_WORD(u32 * DATA, u32 i) 
 {
@@ -40,7 +45,7 @@ u8 GET_BIT(u32 * DATA, u32 i) {
 	return (DATA[i / 32] & (1 << (31 - (i % 32)))) ? 1 : 0;
 }
 
-void EIA3(u8* IK, u32 COUNT, u32 DIRECTION, u32 BEARER, u32 LENGTH, u32* M, u32* MAC) 
+void EIA3( u8* IK, extern u32 COUNT, extern u32 DIRECTION, u32 BEARER, u32 LENGTH, u32* M, u32* MAC)
 {
 	u32 *z, N, L, T, i; 
 	u8 IV[16];
@@ -65,7 +70,7 @@ void EIA3(u8* IK, u32 COUNT, u32 DIRECTION, u32 BEARER, u32 LENGTH, u32* M, u32*
 	N = LENGTH + 64; 
 	L = (N + 31) / 32; 
 	z = (u32 *)malloc(L * sizeof(u32));
-	ZUC(IK, IV, z, L);
+	ZUC2(IK, IV, z, L);
 
 	T = 0;
 	for (i = 0; i < LENGTH; i++) {
@@ -74,5 +79,6 @@ void EIA3(u8* IK, u32 COUNT, u32 DIRECTION, u32 BEARER, u32 LENGTH, u32* M, u32*
 		}
 	} T ^= GET_WORD(z, LENGTH);
 	*MAC = T ^ z[L - 1]; 
+
 	free(z);
 } 

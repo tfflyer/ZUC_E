@@ -21,6 +21,10 @@
 **********************************************************************************/
 
 #pragma once
+
+#include<malloc.h>
+
+
 /* ！！！！！！！！！！！！W！！！！！！！！！- */
 typedef unsigned char u8; 
 typedef unsigned int u32; 
@@ -242,7 +246,7 @@ void Initialization(u8* k, u8* iv) {
 	}
 }
 //伏撹畜埒送
-void GenerateKeystream(u32* pKeystream, int KeystreamLen) {
+void GenerateKeystream( u32* pKeystream, int KeystreamLen) {
 	int i; 
 	{
 		BitReorganization(); 
