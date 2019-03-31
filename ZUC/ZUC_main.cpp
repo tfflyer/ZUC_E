@@ -23,6 +23,7 @@
 #pragma once
 
 #include<malloc.h>
+#include<stdio.h>
 
 
 /* ！！！！！！！！！！！！W！！！！！！！！！- */
@@ -259,3 +260,24 @@ void GenerateKeystream( u32* pKeystream, int KeystreamLen) {
 		LFSRWithWorkMode();
 	}
 }
+/*Test1 :霞編畜埒議伏撹 :
+input:
+	Key: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+	IV: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+output: z1: 27bede74 
+		z2: 018082da 
+*/
+
+/*
+int main() {
+	int i;
+	u32 z[10];
+	u8 k1[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+	u8 iv1[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+	Initialization(k1, iv1);
+	GenerateKeystream(z, 2);
+	for (i = 0; i < 2; i++) {
+		printf("Z[%d],%02X\n",i, z[i]);
+	}
+}
+*/

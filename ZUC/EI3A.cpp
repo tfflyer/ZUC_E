@@ -19,6 +19,7 @@
 
 #include"ZUC_mian.h"
 #include<malloc.h>
+#include<stdio.h>
 
 
 
@@ -82,3 +83,36 @@ void EIA3( u8* IK, extern u32 COUNT, extern u32 DIRECTION, u32 BEARER, u32 LENGT
 
 	free(z);
 } 
+
+/*EIA3_Test1 :≤‚ ‘EIA3À„∑® :
+ Key = (hex) 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ Count =(hex)0
+ Bearer = (hex)0
+Direction = (hex) 0
+Direction = (bin) 0
+Length = 1bits
+Plaintext:(hex) 00000000
+Ciphertext:
+(hex) c8a9595e
+*/
+
+/*
+int main() {
+	int i;
+	printf("EI3A?\n");
+	u8 CK[16] = { 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00 };
+	u32 COUNT = 0x0;
+	u32 BEARER = 0x0;
+	u32 DIRECTION = 0x0;
+	u32 LENGTH = 1;
+	u32 M[] = { 0x00000000 };
+	u32 MAC[8];
+	EIA3(CK, COUNT, DIRECTION, BEARER, LENGTH, M, MAC);
+	printf("MAC is");
+	for (i = 0; i < 1; i++) {
+		printf("%02X", MAC[i]);
+	}
+}
+*/
+
+	
