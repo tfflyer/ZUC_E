@@ -277,7 +277,7 @@ int main() {
 	Initialization(k1, iv1);
 	GenerateKeystream(z, 2);
 	for (i = 0; i < 2; i++) {
-		printf("Z[%d],%02X\n",i, z[i]);
+		printf("Z[%d],%08X\n",i, z[i]);
 	}
 }
 */

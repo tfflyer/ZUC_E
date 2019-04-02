@@ -15,7 +15,7 @@
 	   Modification:重构了主算法的头文件，使得主算法可以被加密算法顺利调用
 **********************************************************************************/
 
-#include"ZUC_mian.h"
+#include"ZUC_main.h"
 #include<malloc.h>
 #include<iostream>
 #include<stdio.h>
@@ -74,7 +74,7 @@ Plaintext:(hex) 6cf65340 735552ab 0c9752fa 6f9025fe 0bd675d9 005875b2 00000000
 Ciphertext:
 (hex) a6c85fc6 6afb8533 aafc2518 dfe78494 0ee1e4b0 30238cc8 00000000
 */
-/*
+
 int main() {
 	int i;
 	printf("EE3A?\n");
@@ -84,13 +84,13 @@ int main() {
 	u32 DIRECTION = 0x0;
 	u32 LENGTH = 193;
 	u32 M[] = {0x6cf65340,0x735552ab,0x0c9752fa,0x6f9025fe,0x0bd675d9,0x005875b2,0x00000000};
-	//u32 C[]= {0xa6c85fc6,0x6afb8533,0xaafc2518,0xdfe78494,0x0ee1e4b0,0x30238cc8,0x00000000};
+	u32 C_real[]= {0xa6c85fc6,0x6afb8533,0xaafc2518,0xdfe78494,0x0ee1e4b0,0x30238cc8,0x00000000};
 	u32 C[8];
 	u32 D[8];
 	EEA3(CK, COUNT, BEARER, DIRECTION, LENGTH, M, C);
 	printf("密文\n");
 		for(i = 0; i < 6; i++) {
-			printf("%02X", C[i]);
+			printf("%08x，", C[i]);
 
 	}
 	printf("\n");
@@ -98,9 +98,9 @@ int main() {
 	EEA3(CK, COUNT, BEARER, DIRECTION, LENGTH, C, D);
 	printf("明文\n");
 	for (i = 0; i < 6; i++) {
-		printf("%02X", D[i]);
+		printf("%08x，", D[i]);
 
 	}
 
 }
-*/
+

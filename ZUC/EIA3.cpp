@@ -17,7 +17,7 @@
 **********************************************************************************/
 
 
-#include"ZUC_mian.h"
+#include"ZUC_main.h"
 #include<malloc.h>
 #include<stdio.h>
 
@@ -46,7 +46,7 @@ u8 GET_BIT(u32 * DATA, u32 i) {
 	return (DATA[i / 32] & (1 << (31 - (i % 32)))) ? 1 : 0;
 }
 
-void EIA3( u8* IK, extern u32 COUNT, extern u32 DIRECTION, u32 BEARER, u32 LENGTH, u32* M, u32* MAC)
+void EIA3( u8* IK,  u32 COUNT, u32 DIRECTION, u32 BEARER, u32 LENGTH, u32* M, u32* MAC)
 {
 	u32 *z, N, L, T, i; 
 	u8 IV[16];
