@@ -13,6 +13,8 @@ update2：引入了测试数据，分别验证密钥流生成、加密算法、�
 
 This is a demo without main（）
 
+update4：新增SM4密码算法！
+
 
 
 
